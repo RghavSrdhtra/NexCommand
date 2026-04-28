@@ -103,37 +103,28 @@ function generateIncident() {
 }
 
 // --- Gemini AI Integration ---
-// Using actual Gemini API integration
-const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY || '';
-
+// Pinging our secure Vercel Serverless Backend
 async function generateGeminiBrief(incident) {
   const prompt = `As an emergency response AI, generate a concise 2-sentence tactical brief for a ${incident.severity} severity ${incident.type} incident located at ${incident.location}. Provide immediate tactical advice for first responders.`;
-  
-  if (!GEMINI_API_KEY || GEMINI_API_KEY === 'YOUR_GEMINI_API_KEY_HERE') {
-    console.warn("No valid VITE_GEMINI_API_KEY found. Using fallback mock.");
-    return `[Gemini AI Mock] High probability of structural damage at ${incident.location}. Recommend dispatching ${incident.type === 'Fire' ? 'Engine' : 'Medic'} units equipped for ${incident.severity} situations immediately.`;
-  }
 
   try {
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${GEMINI_API_KEY}`, {
+    const response = await fetch('/api/gemini', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }]
-      })
+      body: JSON.stringify({ prompt })
     });
     
     const data = await response.json();
     
     if (!response.ok) {
-      console.error("Gemini API Error details:", data);
-      return `API Error: ${data.error?.message || response.statusText}`;
+      console.error("Backend API Error:", data.error);
+      return `API Error: ${data.error}`;
     }
     
-    return data.candidates[0].content.parts[0].text;
+    return data.brief;
   } catch (error) {
-    console.error("Gemini API Request Failed:", error);
-    return "Error communicating with Gemini AI. Check browser console.";
+    console.error("Failed to contact secure backend:", error);
+    return "Error communicating with secure backend. Check network.";
   }
 }
 
