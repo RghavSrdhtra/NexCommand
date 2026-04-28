@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NexCommand | Rapid Crisis Response</title>
+  
+  <!-- SEO & Meta -->
+  <meta name="description" content="NexCommand - A rapid crisis response and intelligent resource allocation dashboard for emergency management." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <!-- Leaflet Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <div class="app-layout">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <i class="ph-fill ph-shield-warning neon-icon"></i>
+        <h1>NexCommand</h1>
+      </div>
+      
+      <nav class="side-nav">
+        <a href="#" class="nav-item active"><i class="ph ph-squares-four"></i> Command Center</a>
+        <a href="#" class="nav-item"><i class="ph ph-map-trifold"></i> Full Map</a>
+        <a href="#" class="nav-item"><i class="ph ph-ambulance"></i> Fleet</a>
+        <a href="#" class="nav-item"><i class="ph ph-chart-line-up"></i> Analytics</a>
+        <a href="#" class="nav-item"><i class="ph ph-gear"></i> Settings</a>
+      </nav>
+      
+      <div class="system-health">
+        <h3>System Health</h3>
+        <div class="health-indicator">
+          <div class="pulse-dot green"></div>
+          <span>API Connected</span>
+        </div>
+        <div class="health-indicator">
+          <div class="pulse-dot green"></div>
+          <span>AI Engine Active</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-dashboard">
+      
+      <!-- Topbar -->
+      <header class="topbar">
+        <div class="search-bar">
+          <i class="ph ph-magnifying-glass"></i>
+          <input type="text" placeholder="Search incidents, units, or zones..." />
+        </div>
+        
+        <div class="topbar-actions">
+          <button class="btn-icon"><i class="ph ph-bell-ringing"></i></button>
+          <div class="user-profile">
+            <img src="https://ui-avatars.com/api/?name=Admin+Operator&background=0D8ABC&color=fff" alt="Admin" />
+            <span>Admin Operator</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Coming Soon View -->
+      <div id="comingSoonView" class="glass-panel" style="display: none; align-items: center; justify-content: center; flex: 1;">
+        <div style="text-align: center; color: var(--text-muted);">
+          <i class="ph-fill ph-wrench" style="font-size: 48px; margin-bottom: 16px; color: var(--neon-cyan);"></i>
+          <h2 id="comingSoonTitle" style="color: var(--text-main); margin-bottom: 8px;">Feature in Development</h2>
+          <p>This module is planned for the next release.</p>
+        </div>
+      </div>
+
+      <!-- Dashboard Grid -->
+      <div id="dashboardView" class="dashboard-grid">
+        
+        <!-- Center/Left Column: Map & Analytics -->
+        <div class="col-main">
+          
+          <!-- Key Metrics -->
+          <div class="metrics-row" id="metricsContainer">
+            <!-- Injected via JS -->
+          </div>
+
+          <!-- Map View -->
+          <section class="glass-panel map-panel">
+            <div class="panel-header">
+              <h2><i class="ph ph-crosshair"></i> Tactical Map</h2>
+              <div class="map-controls">
+                <button class="btn-filter active">All</button>
+                <button class="btn-filter">Medical</button>
+                <button class="btn-filter">Fire</button>
+                <button class="btn-filter">Police</button>
+              </div>
+            </div>
+            <div class="map-container" id="tacticalMap">
+              <!-- Grid background -->
+              <div class="grid-overlay"></div>
+              <!-- Blips will be added here via JS -->
+            </div>
+          </section>
+        </div>
+
+        <!-- Right Column: Incidents & Resources -->
+        <div class="col-side">
+          
+          <!-- Live Incidents Feed -->
+          <section class="glass-panel feed-panel">
+            <div class="panel-header">
+              <h2><i class="ph ph-warning-circle"></i> Live Incidents</h2>
+              <span class="badge" id="incidentCount">0</span>
+            </div>
+            <div class="feed-list" id="incidentFeed">
+              <!-- Injected via JS -->
+            </div>
+          </section>
+
+          <!-- Available Resources -->
+          <section class="glass-panel resource-panel">
+            <div class="panel-header">
+              <h2><i class="ph ph-truck"></i> Resource Allocation</h2>
+            </div>
+            <div class="resource-list" id="resourceList">
+              <!-- Injected via JS -->
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
