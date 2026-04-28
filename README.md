@@ -3,7 +3,7 @@
   <h1>NexCommand 🚨</h1>
   <p><strong>Intelligent Rapid Crisis Response & Resource Allocation Dashboard</strong></p>
 
-  [![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-000000?style=for-the-badge&logo=vercel)](https://nex-command-git-main-rsardhotra-3687s-projects.vercel.app/)
+  [![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-000000?style=for-the-badge&logo=vercel)](https://nex-command.vercel.app?_vercel_share=CTsRbfxM5ncRxVIJTDykx08Ij3LZIykJ)
   [![Built with Vite](https://img.shields.io/badge/Built_with-Vite-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
   [![AI Powered](https://img.shields.io/badge/AI_Powered-Gemini_Flash-8E75B2?style=for-the-badge&logo=google)](https://aistudio.google.com/)
 </div>
@@ -15,7 +15,7 @@
 ---
 
 ## 🔗 Live Prototype
-**Experience the live prototype here: [NexCommand on Vercel](https://nex-command-git-main-rsardhotra-3687s-projects.vercel.app/)**
+**Experience the live prototype here: [NexCommand on Vercel](https://nex-command.vercel.app?_vercel_share=CTsRbfxM5ncRxVIJTDykx08Ij3LZIykJ)**
 
 ---
 
